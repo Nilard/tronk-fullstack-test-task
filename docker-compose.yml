@@ -1,0 +1,29 @@
+name: tronk
+
+services:
+  backend:
+    build: ./backend
+    # image: webdevops/php-nginx:8.3-alpine
+    # working_dir: /app
+    volumes:
+      - ./backend:/app
+      # - ./backend/database/database.sqlite:/app/database/database.sqlite
+    ports:
+      - "8000:80"
+    # tty: true
+    # stdin_open: true
+    # entrypoint: ["/app/entrypoint.sh"]
+    # environment:
+    #   - WEB_DOCUMENT_ROOT=/app/public
+    # develop:
+    #   watch:
+    #     - action: sync
+    #       path: ./backend
+    #       target: /app
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend

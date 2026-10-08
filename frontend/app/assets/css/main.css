@@ -1,0 +1,14 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+button:not(:disabled),
+[role="button"]:not(:disabled) {
+  cursor: pointer;
+}
+
+input {
+  &:invalid:not(:placeholder-shown) {
+    --tw-ring-color: var(--ui-error);
+    outline-color: color-mix(var(--ui-error) 35%, transparent);
+  }
+}
